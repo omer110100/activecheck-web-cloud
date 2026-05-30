@@ -1,0 +1,177 @@
+/* ===========================================
+   ActiveCheck - Shared Stylesheet
+   Design tokens + base styles for all pages
+   =========================================== */
+
+/* Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ---------- Design Tokens ---------- */
+:root {
+  /* Colors */
+  --color-bg: #1a1a1a;            /* main dark background */
+  --color-bg-darker: #121212;     /* nav / deeper panels */
+  --color-accent: #a3e635;        /* lime green accent */
+  --color-accent-dark: #84a82e;   /* darker lime (buttons/highlights) */
+  --color-card: #cccccc;          /* light gray inner card */
+  --color-card-dark: #4d4d4d;     /* secondary dark buttons / cells */
+  --color-text-light: #ffffff;    /* text on dark bg */
+  --color-text-dark: #1a1a1a;     /* text on light card */
+  --color-text-muted: #888888;    /* muted gray text */
+  --color-danger: #e74c3c;        /* reject / error red */
+
+  /* Typography */
+  --font-main: 'Poppins', sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Shadow */
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text-light);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--color-accent);
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--color-accent);
+}
+
+/* dumbbell icon next to logo (simple inline svg styling hook) */
+.logo svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--color-accent);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 12px 28px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* primary = lime accent */
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-text-dark);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* dark secondary button */
+.btn-dark {
+  background-color: var(--color-card-dark);
+  color: var(--color-text-light);
+}
+
+.btn-dark:hover {
+  opacity: 0.9;
+}
+
+/* black solid button (used on dashboard "New Workout") */
+.btn-black {
+  background-color: #000000;
+  color: var(--color-text-light);
+}
+
+/* ---------- Form inputs ---------- */
+.input-field {
+  width: 100%;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  background-color: #9e9e9e;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 14px 20px;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: var(--color-text-light);
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.input-field:focus {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+/* error state for validation */
+.input-field.error {
+  box-shadow: 0 0 0 2px var(--color-danger);
+}
+
+/* validation message text */
+.field-message {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  padding-left: 20px;
+  min-height: 1rem;
+}
+
+.field-message.error-text {
+  color: var(--color-danger);
+}
+
+.field-message.success-text {
+  color: var(--color-accent);
+}
+
+/* ---------- Utility ---------- */
+.text-accent { color: var(--color-accent); }
+.text-center { text-align: center; }
+.hidden { display: none !important; }
