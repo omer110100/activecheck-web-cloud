@@ -63,22 +63,13 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--color-accent);
-  letter-spacing: -0.5px;
+  letter-spacing: 0;
 }
 
-.logo span {
-  color: var(--color-accent);
-}
-
-/* dumbbell icon next to logo (simple inline svg styling hook) */
-.logo svg {
-  width: 28px;
-  height: 28px;
-  stroke: var(--color-accent);
+.logo-img {
+  display: block;
+  width: min(190px, 52vw);
+  height: auto;
 }
 
 /* ---------- Buttons ---------- */
