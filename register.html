@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActiveCheck - Registration</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+
+  <div class="auth-page">
+    <header class="auth-header">
+      <div class="logo">
+        ActiveCheck
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6.5 6.5l11 11" /><path d="M21 21l-1-1" /><path d="M3 3l1 1" />
+          <path d="M18 22l4-4" /><path d="M2 6l4-4" /><path d="M3 10l7-7" /><path d="M14 21l7-7" />
+        </svg>
+      </div>
+    </header>
+
+    <main class="auth-main">
+      <div class="auth-card">
+        <h1 class="auth-title">Registration</h1>
+
+        <form id="registerForm" novalidate>
+          <div class="form-group">
+            <input type="email" id="rEmail" class="input-field" placeholder="Email" />
+            <p class="field-message" id="rEmailMsg"></p>
+          </div>
+
+          <div class="form-group">
+            <input type="password" id="rPassword" class="input-field" placeholder="Password" />
+            <p class="field-message" id="rPasswordMsg"></p>
+          </div>
+
+          <div class="form-group">
+            <input type="password" id="rConfirm" class="input-field" placeholder="Confirm Password" />
+            <p class="field-message" id="rConfirmMsg"></p>
+          </div>
+
+          <div class="form-group">
+            <select id="rRole" class="input-field select-field">
+              <option value="">Role Selection</option>
+              <option value="trainee">Trainee</option>
+              <option value="coach">Coach</option>
+            </select>
+            <p class="field-message" id="rRoleMsg"></p>
+          </div>
+
+          <button type="submit" class="btn btn-dark login-btn">Submit</button>
+          <p class="field-message text-center" id="rFormMsg"></p>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

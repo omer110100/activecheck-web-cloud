@@ -1,0 +1,91 @@
+/* ===========================================
+   Login page specific styles
+   =========================================== */
+
+.auth-page {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-header {
+  padding: var(--space-lg) var(--space-xl);
+}
+
+.auth-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+/* light gray rounded card */
+.auth-card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  width: 100%;
+  max-width: 380px;
+  box-shadow: var(--shadow-card);
+}
+
+.auth-title {
+  color: var(--color-text-dark);
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+}
+
+.form-group {
+  margin-bottom: var(--space-sm);
+}
+
+.signup-link {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-dark);
+  text-decoration: underline;
+  margin: var(--space-sm) 0 var(--space-md);
+}
+
+.signup-link a {
+  color: var(--color-text-dark);
+  font-weight: 600;
+}
+
+.login-btn {
+  display: block;
+  margin: 0 auto;
+  min-width: 140px;
+}
+
+/* dropdown / select styled like an input */
+.select-field {
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  padding-right: 44px;
+}
+
+.select-field option {
+  color: var(--color-text-dark);
+  background-color: #ffffff;
+  font-weight: 600;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .auth-header {
+    padding: var(--space-md);
+  }
+  .auth-card {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
