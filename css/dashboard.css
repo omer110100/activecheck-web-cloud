@@ -2,9 +2,17 @@
    Dashboard page specific styles
    =========================================== */
 
+/* make the content area a flex container so the panel can fill its height
+   (scoped to the dashboard page only via :has) */
+.content:has(.dashboard-panel) {
+  display: flex;
+}
+
+/* panel fills the content area in both width and height */
 .dashboard-panel {
-  max-width: 560px;
-  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* stat cards row */
@@ -12,6 +20,7 @@
   display: flex;
   gap: var(--space-md);
   margin-bottom: var(--space-xl);
+  height: 100%;
 }
 
 .stat-card {
@@ -24,32 +33,33 @@
   align-items: center;
   text-align: center;
   gap: var(--space-xs);
+  justify-content: center;
+  color: white;
 }
 
 .stat-label {
   font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--color-text-dark);
+  font-size: 3vh;
+  color: white;
 }
 
 .stat-value {
-  font-size: 0.85rem;
-  color: #333;
+  font-size: 1.5rem;
+  color: white;
   font-weight: 500;
 }
 
-/* action buttons column */
+/* action buttons column; margin-top:auto pushes it to the bottom of the tall card */
 .action-col {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  max-width: 360px;
-  margin: 0 auto;
+  margin: auto auto 0px;
+  white-space: nowrap;
 }
 
-.action-btn {
-  width: 100%;
-  font-weight: 700;
+span.stat-value.text-accent {
+    color: #BDF100;
 }
 
 /* ---------- Responsive ---------- */
