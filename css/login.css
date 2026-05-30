@@ -24,11 +24,12 @@
 /* light gray rounded card */
 .auth-card {
   background-color: var(--color-card);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-lg);
+  border-radius: 28px;
+  padding: var(--space-xl) 48px;
   width: 100%;
-  max-width: 380px;
+  max-width: 460px;
   box-shadow: var(--shadow-card);
+  margin-bottom: 6%;
 }
 
 .auth-title {
@@ -36,30 +37,111 @@
   text-align: center;
   font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
 .form-group {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
-.signup-link {
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--color-text-dark);
-  text-decoration: underline;
-  margin: var(--space-sm) 0 var(--space-md);
+/* ---------- Registration-specific ---------- */
+/* stacks the white title above the card, both centered */
+.auth-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.signup-link a {
-  color: var(--color-text-dark);
-  font-weight: 600;
+/* white title outside the card (Figma registration) */
+.auth-title--light {
+  color: var(--color-text-light);
+  font-size: 2.2rem;
+  margin-bottom: var(--space-md);
+}
+
+/* wider card with inset, centered fields (Figma registration) */
+.auth-card--wide {
+  max-width: 600px;
+  padding: 48px 56px;
+  margin-bottom: 6%;
+}
+
+.auth-card--wide .form-group {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .login-btn {
   display: block;
   margin: 0 auto;
   min-width: 140px;
+}
+
+/* Figma login submit: gray pill, dark text, centered, narrow */
+.btn-submit {
+  display: block;
+  margin: var(--space-sm) auto 0;
+  min-width: 150px;
+  padding: 12px var(--space-xl);
+  background-color: var(--color-input);
+  color: white;
+  font-weight: 700;
+}
+
+.btn-submit:hover {
+  opacity: 0.9;
+}
+
+.form-status {
+  display: none;
+  margin: var(--space-md) 0 0;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.form-status.success-text {
+  display: block;
+  background-color: rgba(163, 230, 53, 0.18);
+  border: 2px solid var(--color-accent);
+  color: #3f570f;
+}
+
+.form-status.error-text {
+  display: block;
+  background-color: rgba(231, 76, 60, 0.16);
+  border: 2px solid var(--color-danger);
+  color: #8f2419;
+}
+
+.auth-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+  color: var(
+  --color-text-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.auth-switch-btn {
+  padding: 8px 18px;
+  font-size: 0.9rem;
+}
+
+/* small violet underlined link above the submit button (Figma) */
+.auth-switch-link {
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 /* dropdown / select styled like an input */

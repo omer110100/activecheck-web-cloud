@@ -54,6 +54,7 @@ if (loginForm) {
     e.preventDefault(); // no real submit
     let valid = true;
     formMsg.textContent = '';
+    formMsg.className = 'field-message form-status text-center';
 
     // Email
     if (!isNotEmpty(email.value)) {
@@ -80,7 +81,7 @@ if (loginForm) {
     // Success
     if (valid) {
       formMsg.textContent = 'Login successful! Redirecting...';
-      formMsg.className = 'field-message text-center success-text';
+      formMsg.className = 'field-message form-status text-center success-text';
       // simulate redirect to dashboard
       setTimeout(function () {
         window.location.href = 'dashboard.html';
@@ -111,6 +112,7 @@ if (registerForm) {
     e.preventDefault();
     let valid = true;
     rFormMsg.textContent = '';
+    rFormMsg.className = 'field-message form-status text-center';
 
     // Email
     if (!isNotEmpty(rEmail.value)) {
@@ -152,9 +154,13 @@ if (registerForm) {
 
     // Success
     if (valid) {
-      rFormMsg.textContent = 'Registration successful! You can now log in.';
-      rFormMsg.className = 'field-message text-center success-text';
+      rFormMsg.textContent = 'Registration successful! Redirecting...';
+      rFormMsg.className = 'field-message form-status text-center success-text';
       registerForm.reset();
+      // mirror the login flow: send the user into the main app
+      setTimeout(function () {
+        window.location.href = 'dashboard.html';
+      }, 1200);
     }
   });
 }
