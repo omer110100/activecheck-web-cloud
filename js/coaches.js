@@ -8,6 +8,7 @@ const coachListEl = document.getElementById('coachList');
 const searchInput = document.getElementById('coachSearch');
 
 let allCoaches = []; // holds the loaded data
+let lastDataSnapshot = '';
 
 /* ---------- Make a local avatar (initials on a colored circle) ---------- */
 function makeAvatar(name) {
@@ -33,8 +34,10 @@ function createCoachCard(coach) {
   const card = document.createElement('div');
   card.className = 'coach-card';
 
+  const imageSrc = coach.image || makeAvatar(coach.name);
+
   card.innerHTML = `
-    <img src="${makeAvatar(coach.name)}" alt="${coach.name}" />
+    <img src="${imageSrc}" alt="${coach.name}" />
     <div class="coach-info">
       <div class="coach-name">${coach.name}</div>
       <div class="coach-meta">${coach.location} - ${coach.experience}</div>
@@ -69,33 +72,48 @@ function renderCoaches(coaches) {
   });
 }
 
+function getFilteredCoaches() {
+  const term = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+  if (!term) {
+    return allCoaches;
+  }
+
+  return allCoaches.filter(function (coach) {
+    return (
+      coach.name.toLowerCase().includes(term) ||
+      coach.location.toLowerCase().includes(term)
+    );
+  });
+}
+
 /* ---------- Load data from JSON ---------- */
-fetch('data/coaches.json')
+function loadCoaches() {
+  fetch('data/coaches.json?ts=' + Date.now(), { cache: 'no-store' })
   .then(function (response) {
     if (!response.ok) throw new Error('Failed to load coaches');
     return response.json();
   })
   .then(function (data) {
+    const nextSnapshot = JSON.stringify(data);
+    if (nextSnapshot === lastDataSnapshot) return;
+
+    lastDataSnapshot = nextSnapshot;
     allCoaches = data;
-    renderCoaches(allCoaches);
+    renderCoaches(getFilteredCoaches());
   })
   .catch(function (error) {
     coachListEl.innerHTML =
       '<p class="no-results">Could not load coaches. ' + error.message + '</p>';
   });
+}
+
+loadCoaches();
+setInterval(loadCoaches, 2000);
 
 /* ---------- Live search filtering (interaction) ---------- */
 if (searchInput) {
   searchInput.addEventListener('input', function () {
-    const term = searchInput.value.trim().toLowerCase();
-
-    const filtered = allCoaches.filter(function (coach) {
-      return (
-        coach.name.toLowerCase().includes(term) ||
-        coach.location.toLowerCase().includes(term)
-      );
-    });
-
-    renderCoaches(filtered);
+    renderCoaches(getFilteredCoaches());
   });
 }

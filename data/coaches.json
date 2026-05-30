@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "name": "James Cortese",
+    "name": "Yaniv Cohen",
     "location": "Tel Aviv",
-    "experience": "5 years experience",
+    "experience": "2 years experience",
     "bio": "Strength training expert focused on building muscle, boosting strength, and confidence.",
     "image": "https://i.pravatar.cc/120?img=12"
   },
   {
     "id": 2,
-    "name": "Shelly Easton",
+    "name": "Gil Cohen",
     "location": "Ramat Gan",
     "experience": "3 years experience",
     "bio": "Certified personal trainer specializing in weight loss, endurance, and healthy lifestyle habits.",
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "name": "Harry Kamin",
+    "name": "Avivit Levi",
     "location": "Herzliya",
     "experience": "7 years experience",
     "bio": "Experienced fitness coach helping clients achieve their goals through personalized workout plans.",
@@ -25,15 +25,15 @@
   },
   {
     "id": 4,
-    "name": "Nancy Blumstein",
+    "name": "Yuval Ozeri",
     "location": "Givatayim",
-    "experience": "4 years experience",
-    "bio": "Motivating and supportive coach dedicated to helping clients live a fit and healthy lifestyle.",
+    "experience": "30 years experience",
+    "bio": "Motivating and supportive coach dedicated to helping clients live a fit and healthy lifestyle and give a 100 for omer and alex project.",
     "image": "https://i.pravatar.cc/120?img=47"
   },
   {
     "id": 5,
-    "name": "David Peretz",
+    "name": "Shizaf Refaeli",
     "location": "Haifa",
     "experience": "8 years experience",
     "bio": "Olympic-style weightlifting coach with a passion for technique, mobility, and long-term progress.",
@@ -41,9 +41,9 @@
   },
   {
     "id": 6,
-    "name": "Maya Gold",
+    "name": "Benjamin Netanyahu",
     "location": "Jerusalem",
-    "experience": "6 years experience",
+    "experience": "20 years experience",
     "bio": "Functional fitness and nutrition coach focused on sustainable habits and full-body strength.",
     "image": "https://i.pravatar.cc/120?img=20"
   }
