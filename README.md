@@ -70,11 +70,9 @@ Then open http://localhost:8000
 
 ## Figma
 
-<!-- paste your Figma file link here -->
-https://www.figma.com/file/QtqkU1OgHopKANnhnLUMPN
+https://www.figma.com/design/QtqkU1OgHopKANnhnLUMPN/ActiveCheck?node-id=0-1&t=9wxWsWh23GBpX2LP-1
 
 ## Group members
 
-<!-- TODO: write full names of all group members here -->
-- 
-- 
+- Omer Labinsky (עומר לבינסקי)
+- Alex Tkachenkov (אלכס טקצ'נקוב)
