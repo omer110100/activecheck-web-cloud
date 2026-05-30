@@ -1,0 +1,153 @@
+/* ===========================================
+   App shell - logged-in layout
+   Used by dashboard.html and coaches.html
+   sidebar nav + topbar + content card
+   =========================================== */
+
+.app-shell {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.topbar .user-greeting {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-dark);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* hamburger - hidden on desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.hamburger span {
+  width: 24px;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* ---------- Body: sidebar + content ---------- */
+.app-body {
+  flex: 1;
+  display: flex;
+  gap: var(--space-lg);
+  padding: 0 var(--space-lg) var(--space-lg);
+}
+
+/* sidebar nav */
+.sidebar {
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+}
+
+.sidebar a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.15s ease;
+}
+
+.sidebar a:hover {
+  color: var(--color-accent);
+}
+
+.sidebar a.active {
+  color: var(--color-accent);
+}
+
+/* content area */
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* light gray rounded panel that holds page content */
+.panel {
+  background-color: var(--color-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.panel-title {
+  text-align: center;
+  color: var(--color-text-dark);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+}
+
+/* white title variant (dashboard) */
+.panel-title.light {
+  color: var(--color-text-light);
+}
+
+/* ---------- Responsive: collapse sidebar ---------- */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .app-body {
+    flex-direction: column;
+    padding: 0 var(--space-md) var(--space-md);
+  }
+
+  /* sidebar becomes a dropdown panel, hidden by default */
+  .sidebar {
+    flex: none;
+    width: 100%;
+    background-color: var(--color-bg-darker);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: none;
+  }
+
+  .sidebar.open {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    padding: var(--space-md);
+  }
+  .panel {
+    padding: var(--space-md);
+  }
+}

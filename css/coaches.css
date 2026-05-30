@@ -1,0 +1,88 @@
+/* ===========================================
+   Coaches page specific styles
+   =========================================== */
+
+.coach-search {
+  max-width: 400px;
+  margin: 0 auto var(--space-lg);
+}
+
+.coach-search .input-field {
+  background-color: #ffffff;
+  color: var(--color-text-dark);
+}
+
+.coach-search .input-field::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.coach-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* single coach card */
+.coach-card {
+  background-color: var(--color-card-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.coach-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.coach-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.coach-name {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.coach-meta {
+  color: var(--color-text-light);
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+.coach-bio {
+  color: #cccccc;
+  font-size: 0.8rem;
+}
+
+.coach-card .btn {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  padding: 10px 18px;
+}
+
+.loading-msg,
+.no-results {
+  text-align: center;
+  color: var(--color-text-dark);
+  padding: var(--space-lg);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .coach-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .coach-info {
+    text-align: center;
+  }
+}

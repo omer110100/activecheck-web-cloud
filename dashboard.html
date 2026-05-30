@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActiveCheck - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="logo">
+        ActiveCheck
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6.5 6.5l11 11" /><path d="M21 21l-1-1" /><path d="M3 3l1 1" />
+          <path d="M18 22l4-4" /><path d="M2 6l4-4" /><path d="M3 10l7-7" /><path d="M14 21l7-7" />
+        </svg>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="user-greeting">
+        <span class="avatar">O</span>
+        Hello Omer !
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="app-body">
+
+      <!-- Sidebar nav -->
+      <nav class="sidebar" id="sidebar">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="#">Workouts</a>
+        <a href="#">Program</a>
+        <a href="#">Metrics</a>
+        <a href="#">Messages</a>
+        <a href="coaches.html">Coaches</a>
+      </nav>
+
+      <!-- Content -->
+      <main class="content">
+        <div class="panel dashboard-panel">
+          <h1 class="panel-title light">Dashboard</h1>
+
+          <!-- stat cards -->
+          <div class="stat-row">
+            <div class="stat-card">
+              <span class="stat-label">Last Workout</span>
+              <span class="stat-value">08-02-2026</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Current Weight</span>
+              <span class="stat-value">82 Kg</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Coach</span>
+              <span class="stat-value text-accent">Active</span>
+            </div>
+          </div>
+
+          <!-- action buttons -->
+          <div class="action-col">
+            <button class="btn btn-black action-btn">New Workout</button>
+            <button class="btn btn-dark action-btn">Workout History</button>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

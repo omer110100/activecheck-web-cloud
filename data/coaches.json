@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "James Cortese",
+    "location": "Tel Aviv",
+    "experience": "5 years experience",
+    "bio": "Strength training expert focused on building muscle, boosting strength, and confidence.",
+    "image": "https://i.pravatar.cc/120?img=12"
+  },
+  {
+    "id": 2,
+    "name": "Shelly Easton",
+    "location": "Ramat Gan",
+    "experience": "3 years experience",
+    "bio": "Certified personal trainer specializing in weight loss, endurance, and healthy lifestyle habits.",
+    "image": "https://i.pravatar.cc/120?img=45"
+  },
+  {
+    "id": 3,
+    "name": "Harry Kamin",
+    "location": "Herzliya",
+    "experience": "7 years experience",
+    "bio": "Experienced fitness coach helping clients achieve their goals through personalized workout plans.",
+    "image": "https://i.pravatar.cc/120?img=33"
+  },
+  {
+    "id": 4,
+    "name": "Nancy Blumstein",
+    "location": "Givatayim",
+    "experience": "4 years experience",
+    "bio": "Motivating and supportive coach dedicated to helping clients live a fit and healthy lifestyle.",
+    "image": "https://i.pravatar.cc/120?img=47"
+  },
+  {
+    "id": 5,
+    "name": "David Peretz",
+    "location": "Haifa",
+    "experience": "8 years experience",
+    "bio": "Olympic-style weightlifting coach with a passion for technique, mobility, and long-term progress.",
+    "image": "https://i.pravatar.cc/120?img=51"
+  },
+  {
+    "id": 6,
+    "name": "Maya Gold",
+    "location": "Jerusalem",
+    "experience": "6 years experience",
+    "bio": "Functional fitness and nutrition coach focused on sustainable habits and full-body strength.",
+    "image": "https://i.pravatar.cc/120?img=20"
+  }
+]
