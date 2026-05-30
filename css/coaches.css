@@ -69,6 +69,18 @@
   padding: 10px 18px;
 }
 
+/* "requested" state after clicking Request Assignment */
+.btn-requested {
+  background-color: #9A9A9A;
+  color: #F7B707;
+  cursor: default;
+}
+
+/* keep the requested colors even though the button is disabled */
+.btn-requested:disabled {
+  opacity: 1;
+}
+
 .loading-msg,
 .no-results {
   text-align: center;

@@ -46,12 +46,12 @@ function createCoachCard(coach) {
     <button class="btn btn-primary">Request Assignment</button>
   `;
 
-  // interaction: clicking the button gives feedback
+  // interaction: clicking the button switches it to a "requested" state
   const btn = card.querySelector('button');
   btn.addEventListener('click', function () {
-    btn.textContent = 'Requested ✓';
+    btn.textContent = 'Assignment Requested';
     btn.classList.remove('btn-primary');
-    btn.classList.add('btn-dark');
+    btn.classList.add('btn-requested');
     btn.disabled = true;
   });
 

@@ -33,14 +33,6 @@
   },
   {
     "id": 5,
-    "name": "Shizaf Refaeli",
-    "location": "Haifa",
-    "experience": "8 years experience",
-    "bio": "Olympic-style weightlifting coach with a passion for technique, mobility, and long-term progress.",
-    "image": "https://i.pravatar.cc/120?img=51"
-  },
-  {
-    "id": 6,
     "name": "Benjamin Netanyahu",
     "location": "Jerusalem",
     "experience": "20 years experience",
