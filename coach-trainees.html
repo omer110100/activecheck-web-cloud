@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActiveCheck - Trainees</title>
+  <link rel="icon" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/ui.css" />
+  <link rel="stylesheet" href="css/coach.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <header class="topbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="ActiveCheck" class="logo-img" />
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="user-greeting">
+        <span class="avatar" id="userInitial">?</span>
+        <span id="userGreeting">Hello</span>
+      </div>
+    </header>
+
+    <div class="app-body">
+
+      <nav class="sidebar" id="sidebar">
+        <a href="coach-dashboard.html">Dashboard</a>
+        <a href="coach-programs.html">Programs</a>
+        <a href="coach-trainees.html" class="active">Trainees</a>
+      </nav>
+
+      <main class="content">
+        <div class="panel">
+          <h1 class="panel-title light">Active Trainees</h1>
+          <div class="list-rows" id="traineesList">
+            <p class="state-msg">Loading...</p>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/coach-trainees.js"></script>
+</body>
+</html>
