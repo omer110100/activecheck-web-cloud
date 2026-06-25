@@ -176,6 +176,26 @@
 }
 
 @media (max-width: 600px) {
+  /* data rows: avatar + name on the top line, action button full-width below */
   .data-row { flex-wrap: wrap; }
-  .row-meta { margin-right: 0; }
+  .row-name { flex: 1 1 auto; }
+  .row-meta { margin-right: auto; font-size: 0.8rem; }
+  .row-actions {
+    width: 100%;
+    margin-top: var(--space-sm);
+  }
+  .row-actions .btn { flex: 1; text-align: center; }
+
+  /* program cards: stack content and actions */
+  .program-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .program-card .row-actions { width: 100%; }
+
+  /* keep the profile tabs on one row */
+  .tab {
+    font-size: 0.82rem;
+    padding: 10px 6px;
+  }
 }
