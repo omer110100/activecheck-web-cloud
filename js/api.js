@@ -6,7 +6,7 @@
    =========================================== */
 
 // Production API URL — replace REPLACE_WITH_RENDER_URL after deploying the server on Render.
-const PROD_API_BASE = 'https://REPLACE_WITH_RENDER_URL.onrender.com/api';
+const PROD_API_BASE = 'https://activecheck-server.onrender.com/api';
 
 // Use the local server during development, the Render server in production.
 const isLocalHost =
