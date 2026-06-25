@@ -24,6 +24,11 @@
         <div class="auth-card auth-card--wide">
           <form id="registerForm" novalidate>
             <div class="form-group">
+              <input type="text" id="rName" class="input-field" placeholder="Full Name" autocomplete="name" />
+              <p class="field-message" id="rNameMsg"></p>
+            </div>
+
+            <div class="form-group">
               <input type="email" id="rEmail" class="input-field" placeholder="Email" />
               <p class="field-message" id="rEmailMsg"></p>
             </div>
@@ -60,6 +65,7 @@
     </main>
   </div>
 
+  <script src="js/api.js"></script>
   <script src="js/auth.js"></script>
 </body>
 </html>
