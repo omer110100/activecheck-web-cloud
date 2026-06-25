@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActiveCheck - Metrics</title>
+  <link rel="icon" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/ui.css" />
+  <link rel="stylesheet" href="css/metrics.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <header class="topbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="ActiveCheck" class="logo-img" />
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="user-greeting">
+        <span class="avatar" id="userInitial">?</span>
+        <span id="userGreeting">Hello</span>
+      </div>
+    </header>
+
+    <div class="app-body">
+
+      <nav class="sidebar" id="sidebar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="workouts.html">Workouts</a>
+        <a href="program.html">Program</a>
+        <a href="metrics.html" class="active">Metrics</a>
+        <a href="coaches.html">Coaches</a>
+      </nav>
+
+      <main class="content">
+        <div class="panel">
+
+          <h2 class="section-heading">Profile Information:</h2>
+          <div class="profile-grid">
+            <input type="text" id="firstName" class="input-field" placeholder="First Name" />
+            <input type="text" id="gender" class="input-field" placeholder="Gender" />
+            <input type="text" id="lastName" class="input-field" placeholder="Last Name" />
+            <input type="number" id="height" class="input-field" placeholder="Height (cm)" />
+            <input type="text" id="phone" class="input-field" placeholder="Phone Number" />
+            <input type="number" id="yearOfBirth" class="input-field" placeholder="Year Of Birth" />
+          </div>
+          <div class="profile-save-row">
+            <button type="button" class="btn btn-primary" id="saveProfileBtn">Save Profile</button>
+            <span class="field-message" id="profileStatus"></span>
+          </div>
+
+          <h2 class="section-heading">Weight Information:</h2>
+          <div class="weight-add">
+            <input type="date" id="weightDate" class="input-field" />
+            <input type="number" id="weightValue" class="input-field" placeholder="Weight (kg)" min="0" />
+            <button type="button" class="btn btn-primary" id="addWeightBtn">Add measurement</button>
+          </div>
+
+          <table class="weight-table">
+            <thead>
+              <tr><th>Date</th><th>Weight</th><th class="action-col-head">Action</th></tr>
+            </thead>
+            <tbody id="weightBody">
+              <tr><td colspan="3" class="state-row">Loading...</td></tr>
+            </tbody>
+          </table>
+
+          <div class="chart-wrap">
+            <canvas id="weightChart"></canvas>
+            <p class="chart-empty hidden" id="chartEmpty">No measurements yet — add one to see your progress.</p>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/metrics.js"></script>
+</body>
+</html>

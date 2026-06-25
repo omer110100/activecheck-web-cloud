@@ -1,0 +1,126 @@
+/* ===========================================
+   Metrics page
+   =========================================== */
+
+.section-heading {
+  color: var(--color-text-dark);
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: var(--space-md) 0 var(--space-md);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.profile-grid .input-field {
+  background-color: #9e9e9e;
+}
+
+.profile-save-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.profile-save-row .btn {
+  font-size: 1rem;
+  padding: 10px 22px;
+}
+
+/* weight add row */
+.weight-add {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  background-color: #bdbdbd;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+}
+
+.weight-add .input-field {
+  max-width: 220px;
+  background-color: #ffffff;
+  color: var(--color-text-dark);
+}
+
+.weight-add .input-field::placeholder {
+  color: var(--color-text-muted);
+}
+
+.weight-add .btn {
+  font-size: 0.95rem;
+  padding: 12px 22px;
+}
+
+/* weight table */
+.weight-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-lg);
+}
+
+.weight-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.weight-table .action-col-head { text-align: right; }
+
+.weight-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  font-weight: 600;
+}
+
+.weight-table .row-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.weight-table .icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-dark);
+  padding: 4px;
+  display: inline-flex;
+  border-radius: var(--radius-sm);
+}
+
+.weight-table .icon-btn:hover { color: var(--color-danger); }
+.weight-table .icon-btn svg { width: 20px; height: 20px; }
+
+.state-row {
+  text-align: center;
+  padding: var(--space-lg) !important;
+  color: var(--color-text-dark);
+  font-weight: 500;
+}
+
+/* chart */
+.chart-wrap {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  min-height: 240px;
+}
+
+.chart-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-lg);
+}
+
+@media (max-width: 600px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .weight-add .input-field { max-width: none; flex: 1; }
+}
