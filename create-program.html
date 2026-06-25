@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActiveCheck - Create Program</title>
+  <link rel="icon" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/ui.css" />
+  <link rel="stylesheet" href="css/new-workout.css" />
+  <link rel="stylesheet" href="css/program.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <header class="topbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="ActiveCheck" class="logo-img" />
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="user-greeting">
+        <span class="avatar" id="userInitial">?</span>
+        <span id="userGreeting">Hello</span>
+      </div>
+    </header>
+
+    <div class="app-body">
+
+      <nav class="sidebar" id="sidebar">
+        <a href="coach-dashboard.html">Dashboard</a>
+        <a href="coach-programs.html" class="active">Programs</a>
+        <a href="coach-trainees.html">Trainees</a>
+      </nav>
+
+      <main class="content">
+        <div class="panel">
+          <h1 class="panel-title light" id="pageTitle">Create Program</h1>
+
+          <div class="workout-form-box">
+            <div class="program-field">
+              <label for="traineeSelect" class="program-label">For Trainee:</label>
+              <select id="traineeSelect" class="program-name"></select>
+            </div>
+
+            <div class="program-field">
+              <label for="programName" class="program-label">Program Name:</label>
+              <input type="text" id="programName" class="program-name" placeholder="Program name" />
+            </div>
+
+            <div class="program-field inline">
+              <label for="sessionsWeek" class="program-label">Sessions Per Week:</label>
+              <input type="number" id="sessionsWeek" class="sessions-week" min="0" value="0" />
+            </div>
+
+            <h2 class="section-title program-sessions-title">Program Sessions</h2>
+
+            <div class="exercises-head">
+              <span>Exercises</span>
+              <span>Sets</span>
+              <span>Reps</span>
+              <span>Weight</span>
+              <span class="head-action"></span>
+            </div>
+
+            <div id="exerciseRows"></div>
+
+            <button type="button" class="btn btn-primary add-exercise-btn" id="addExerciseBtn">
+              Add Exercise +
+            </button>
+
+            <p class="field-message form-status text-center" id="formStatus"></p>
+
+            <div class="form-actions">
+              <a href="coach-programs.html" class="btn cancel-btn">Cancel</a>
+              <button type="button" class="btn btn-black save-btn" id="saveBtn">Save Program</button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/create-program.js"></script>
+</body>
+</html>
