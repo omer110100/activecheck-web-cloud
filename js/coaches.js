@@ -1,16 +1,15 @@
 /* ===========================================
-   ActiveCheck - Coaches
-   Loads coach data from JSON, renders cards
-   dynamically, and supports live search filtering.
+   ActiveCheck - Find A Coach
+   Loads coaches from the API, supports live search,
+   and lets the trainee request an assignment.
+   Requires api.js, ui.js, shell.js.
    =========================================== */
 
 const coachListEl = document.getElementById('coachList');
 const searchInput = document.getElementById('coachSearch');
 
-let allCoaches = []; // holds the loaded data
-let lastDataSnapshot = '';
+let allCoaches = [];
 
-/* ---------- Make a local avatar (initials on a colored circle) ---------- */
 function makeAvatar(name) {
   const initials = name
     .split(' ')
@@ -29,44 +28,75 @@ function makeAvatar(name) {
   return 'data:image/svg+xml,' + encodeURIComponent(svg);
 }
 
-/* ---------- Build a single coach card ---------- */
+function requestCoach(coachId, btn) {
+  btn.disabled = true;
+  apiFetch('/requests', { method: 'POST', body: JSON.stringify({ coachId: coachId }) })
+    .then(function () {
+      markRequested(btn);
+      showToast('Assignment requested', 'success');
+    })
+    .catch(function (err) {
+      if (/pending/i.test(err.message)) {
+        markRequested(btn);
+        showToast('You already requested this coach', 'info');
+      } else {
+        btn.disabled = false;
+        showToast(err.message, 'error');
+      }
+    });
+}
+
+function markRequested(btn) {
+  btn.textContent = 'Assignment Requested';
+  btn.classList.remove('btn-primary');
+  btn.classList.add('btn-requested');
+  btn.disabled = true;
+}
+
 function createCoachCard(coach) {
   const card = document.createElement('div');
   card.className = 'coach-card';
 
-  const imageSrc = coach.image || makeAvatar(coach.name);
+  const img = document.createElement('img');
+  img.src = makeAvatar(coach.name);
+  img.alt = coach.name;
 
-  card.innerHTML = `
-    <img src="${imageSrc}" alt="${coach.name}" />
-    <div class="coach-info">
-      <div class="coach-name">${coach.name}</div>
-      <div class="coach-meta">${coach.location} - ${coach.experience}</div>
-      <div class="coach-bio">${coach.bio}</div>
-    </div>
-    <button class="btn btn-primary">Request Assignment</button>
-  `;
+  const info = document.createElement('div');
+  info.className = 'coach-info';
 
-  // interaction: clicking the button switches it to a "requested" state
-  const btn = card.querySelector('button');
-  btn.addEventListener('click', function () {
-    btn.textContent = 'Assignment Requested';
-    btn.classList.remove('btn-primary');
-    btn.classList.add('btn-requested');
-    btn.disabled = true;
-  });
+  const nameEl = document.createElement('div');
+  nameEl.className = 'coach-name';
+  nameEl.textContent = coach.name;
 
+  const metaEl = document.createElement('div');
+  metaEl.className = 'coach-meta';
+  metaEl.textContent = 'Personal Coach';
+
+  const bioEl = document.createElement('div');
+  bioEl.className = 'coach-bio';
+  bioEl.textContent = coach.bio || 'Certified coach ready to help you reach your goals.';
+
+  info.appendChild(nameEl);
+  info.appendChild(metaEl);
+  info.appendChild(bioEl);
+
+  const btn = document.createElement('button');
+  btn.className = 'btn btn-primary';
+  btn.textContent = 'Request Assignment';
+  btn.addEventListener('click', function () { requestCoach(coach._id, btn); });
+
+  card.appendChild(img);
+  card.appendChild(info);
+  card.appendChild(btn);
   return card;
 }
 
-/* ---------- Render a list of coaches ---------- */
 function renderCoaches(coaches) {
   coachListEl.innerHTML = '';
-
   if (coaches.length === 0) {
     coachListEl.innerHTML = '<p class="no-results">No coaches found.</p>';
     return;
   }
-
   coaches.forEach(function (coach) {
     coachListEl.appendChild(createCoachCard(coach));
   });
@@ -74,46 +104,28 @@ function renderCoaches(coaches) {
 
 function getFilteredCoaches() {
   const term = searchInput ? searchInput.value.trim().toLowerCase() : '';
-
-  if (!term) {
-    return allCoaches;
-  }
-
+  if (!term) return allCoaches;
   return allCoaches.filter(function (coach) {
-    return (
-      coach.name.toLowerCase().includes(term) ||
-      coach.location.toLowerCase().includes(term)
-    );
+    return coach.name.toLowerCase().includes(term);
   });
 }
 
-/* ---------- Load data from JSON ---------- */
 function loadCoaches() {
-  fetch('data/coaches.json?ts=' + Date.now(), { cache: 'no-store' })
-  .then(function (response) {
-    if (!response.ok) throw new Error('Failed to load coaches');
-    return response.json();
-  })
-  .then(function (data) {
-    const nextSnapshot = JSON.stringify(data);
-    if (nextSnapshot === lastDataSnapshot) return;
-
-    lastDataSnapshot = nextSnapshot;
-    allCoaches = data;
-    renderCoaches(getFilteredCoaches());
-  })
-  .catch(function (error) {
-    coachListEl.innerHTML =
-      '<p class="no-results">Could not load coaches. ' + error.message + '</p>';
-  });
+  apiFetch('/users/coaches')
+    .then(function (data) {
+      allCoaches = data.coaches;
+      renderCoaches(getFilteredCoaches());
+    })
+    .catch(function (err) {
+      coachListEl.innerHTML =
+        '<p class="no-results">Could not load coaches. ' + err.message + '</p>';
+    });
 }
 
-loadCoaches();
-setInterval(loadCoaches, 2000);
-
-/* ---------- Live search filtering (interaction) ---------- */
 if (searchInput) {
   searchInput.addEventListener('input', function () {
     renderCoaches(getFilteredCoaches());
   });
 }
+
+loadCoaches();
