@@ -1,0 +1,145 @@
+/* ===========================================
+   New / Edit Workout page
+   =========================================== */
+
+.workout-form-box {
+  background-color: var(--color-card-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.form-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.section-title {
+  color: var(--color-text-light);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.add-exercise-btn {
+  font-size: 0.95rem;
+  padding: 10px 20px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.meta-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-light);
+  font-weight: 600;
+}
+
+.date-input {
+  font-family: var(--font-main);
+  background-color: var(--color-bg-darker);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-light);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.checkbox-field input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+}
+
+/* column layout shared by header + rows */
+.exercises-head,
+.exercise-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 44px;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.exercises-head {
+  color: var(--color-text-light);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.exercise-row {
+  margin-bottom: var(--space-md);
+}
+
+.exercise-row select,
+.exercise-row input {
+  font-family: var(--font-main);
+  background-color: var(--color-bg-darker);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.exercise-row select {
+  cursor: pointer;
+}
+
+.row-delete {
+  background: none;
+  border: none;
+  color: var(--color-text-light);
+  cursor: pointer;
+  padding: 6px;
+  display: inline-flex;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+.row-delete:hover { color: var(--color-danger); }
+.row-delete svg { width: 22px; height: 22px; }
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.cancel-btn {
+  background-color: #ffffff;
+  color: var(--color-accent-dark);
+}
+
+.save-btn { min-width: 160px; }
+
+.form-status { min-height: 1.2rem; }
+
+@media (max-width: 640px) {
+  .exercises-head { display: none; }
+  .exercise-row {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    background-color: var(--color-bg-darker);
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+  }
+  .exercise-row select { grid-column: 1 / -1; }
+}
