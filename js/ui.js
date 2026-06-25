@@ -35,6 +35,26 @@ function showConfirm(message, opts) {
   });
 }
 
+function showInfo(title, bodyHtml) {
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML =
+    '<div class="modal" role="dialog" aria-modal="true">' +
+    '  <h3 class="modal-title"></h3>' +
+    '  <div class="modal-body"></div>' +
+    '  <div class="modal-actions">' +
+    '    <button class="btn btn-primary modal-close" type="button">Close</button>' +
+    '  </div>' +
+    '</div>';
+  overlay.querySelector('.modal-title').textContent = title;
+  overlay.querySelector('.modal-body').innerHTML = bodyHtml;
+  document.body.appendChild(overlay);
+
+  function close() { overlay.remove(); }
+  overlay.querySelector('.modal-close').addEventListener('click', close);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+}
+
 function showToast(message, type) {
   let host = document.getElementById('toastHost');
   if (!host) {

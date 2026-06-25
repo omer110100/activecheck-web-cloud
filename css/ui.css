@@ -1,0 +1,103 @@
+/* ===========================================
+   Shared UI: confirm modal + toasts
+   =========================================== */
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  z-index: 1000;
+}
+
+.modal {
+  background-color: var(--color-bg-darker);
+  color: var(--color-text-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  max-width: 420px;
+  width: 100%;
+  box-shadow: var(--shadow-card);
+}
+
+.modal-message {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--color-accent);
+}
+
+.modal-body {
+  margin-bottom: var(--space-lg);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.modal-body table { width: 100%; border-collapse: collapse; }
+.modal-body th, .modal-body td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+.modal-actions .btn {
+  font-size: 1rem;
+  padding: 10px 24px;
+}
+
+/* ---------- Toasts ---------- */
+.toast-host {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  z-index: 1100;
+}
+
+.toast {
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
+  box-shadow: var(--shadow-card);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  max-width: 320px;
+}
+
+.toast-hide {
+  opacity: 0;
+}
+
+.toast-success { background-color: var(--color-accent); }
+.toast-error { background-color: var(--color-danger); color: var(--color-text-light); }
+.toast-info { background-color: var(--color-card); }
+
+@media (max-width: 480px) {
+  .toast-host {
+    left: var(--space-md);
+    right: var(--space-md);
+    top: var(--space-md);
+  }
+  .toast { max-width: none; }
+}
