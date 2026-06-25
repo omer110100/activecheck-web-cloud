@@ -38,3 +38,19 @@
   padding: var(--space-md);
   min-height: 240px;
 }
+
+/* mobile: keep the table tidy (dates on one line, smaller action button) */
+@media (max-width: 600px) {
+  .tp-table-wrap { padding: var(--space-sm); }
+  .tp-table th,
+  .tp-table td {
+    padding: 8px 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .tp-table .btn {
+    font-size: 0.75rem;
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+}

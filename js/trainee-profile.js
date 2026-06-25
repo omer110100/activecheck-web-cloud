@@ -22,6 +22,7 @@ const tpChartCanvas = document.getElementById('tpWeightChart');
 const createProgramBtn = document.getElementById('createProgramBtn');
 
 let weightChart = null;
+let lastMeasurements = [];
 
 function fmt(value) {
   if (!value) return '—';
@@ -42,6 +43,11 @@ tabButtons.forEach(function (btn) {
     document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
     btn.classList.add('active');
     document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    // the chart can't render while its tab is hidden (0 size);
+    // re-create it now that the panel is visible
+    if (btn.dataset.tab === 'metrics') {
+      renderChart(lastMeasurements);
+    }
   });
 });
 
@@ -74,6 +80,7 @@ function viewWorkout(w) {
 }
 
 function renderMetrics(trainee, measurements) {
+  lastMeasurements = measurements;
   document.getElementById('infoName').textContent = trainee.name || '—';
   document.getElementById('infoYear').textContent = trainee.yearOfBirth || '—';
   document.getElementById('infoHeight').textContent = trainee.height || '—';
