@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActiveCheck - Workout History</title>
+  <link rel="icon" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/ui.css" />
+  <link rel="stylesheet" href="css/workout-history.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <header class="topbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="ActiveCheck" class="logo-img" />
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="user-greeting">
+        <span class="avatar" id="userInitial">?</span>
+        <span id="userGreeting">Hello</span>
+      </div>
+    </header>
+
+    <div class="app-body">
+
+      <nav class="sidebar" id="sidebar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="workouts.html" class="active">Workouts</a>
+        <a href="program.html">Program</a>
+        <a href="metrics.html">Metrics</a>
+        <a href="coaches.html">Coaches</a>
+      </nav>
+
+      <main class="content">
+        <div class="panel">
+          <h1 class="panel-title light">Workout History</h1>
+
+          <div class="history-box">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Exercises</th>
+                  <th class="action-col-head">Action</th>
+                </tr>
+              </thead>
+              <tbody id="historyBody">
+                <tr><td colspan="3" class="state-row">Loading workouts...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/workout-history.js"></script>
+</body>
+</html>
