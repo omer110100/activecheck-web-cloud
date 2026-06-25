@@ -44,6 +44,22 @@
   font-size: 0.85rem;
 }
 
+/* shared logout button (injected by shell.js) */
+.logout-btn {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--color-text-dark);
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  cursor: pointer;
+  margin-left: var(--space-sm);
+}
+
+.logout-btn:hover { opacity: 0.9; }
+
 /* hamburger - hidden on desktop */
 .hamburger {
   display: none;
