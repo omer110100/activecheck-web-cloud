@@ -26,7 +26,7 @@ activecheck-web-cloud/
 ├── index.html / register.html        # auth
 ├── dashboard.html, workouts.html, ... # trainee pages
 ├── coach-dashboard.html, ...          # coach pages
-├── css/                               # design tokens + per-page styles
+├── style/                             # design tokens + per-page styles
 ├── js/
 │   ├── api.js        # API base URL + fetch wrapper + token
 │   ├── shell.js      # auth guard + top bar

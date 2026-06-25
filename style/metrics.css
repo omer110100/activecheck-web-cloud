@@ -99,9 +99,9 @@
 .weight-table .icon-btn:hover { color: var(--color-danger); }
 .weight-table .icon-btn svg { width: 20px; height: 20px; }
 
-.state-row {
+.weight-table .state-row {
   text-align: center;
-  padding: var(--space-lg) !important;
+  padding: var(--space-lg);
   color: var(--color-text-dark);
   font-weight: 500;
 }

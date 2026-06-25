@@ -70,9 +70,9 @@
   height: 22px;
 }
 
-.state-row {
+.history-table .state-row {
   text-align: center;
-  padding: var(--space-xl) !important;
+  padding: var(--space-xl);
   color: #e0e0e0;
   font-weight: 500;
 }
