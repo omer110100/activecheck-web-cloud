@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+
+# planning / internal docs / tooling — never publish
+docs/superpowers/
+_project-planning/
+.playwright-mcp/
