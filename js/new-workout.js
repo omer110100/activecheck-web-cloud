@@ -1,20 +1,9 @@
 /* ===========================================
    ActiveCheck - New / Edit Workout
-   - Exercise names come from the wger external API
-     (with a built-in fallback list if it fails).
-   - Create (POST) or edit (PUT when ?id= is present).
-   Requires api.js, ui.js, shell.js.
+   Exercise names come from the shared wger module
+   (js/exercises.js). Create (POST) or edit (PUT when ?id=).
+   Requires api.js, ui.js, exercises.js, shell.js.
    =========================================== */
-
-// wger ignores ?language=, so we fetch a chunk and keep English (id 2) client-side.
-const WGER_URL =
-  'https://wger.de/api/v2/exercise-translation/?limit=400&format=json';
-const WGER_ENGLISH_ID = 2;
-
-const FALLBACK_EXERCISES = [
-  'Bench Press', 'Squat', 'Deadlift', 'Pull Up', 'Push Up',
-  'Shoulder Press', 'Lunge', 'Bicep Curl', 'Tricep Extension', 'Plank'
-];
 
 const DELETE_ICON =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
@@ -45,19 +34,6 @@ function isoDate(value) {
   return d.toISOString().slice(0, 10);
 }
 
-function buildExerciseOptions(selectedName) {
-  let names = exerciseNames.slice();
-  if (selectedName && names.indexOf(selectedName) === -1) {
-    names.unshift(selectedName);
-  }
-  let html = '<option value="">Select exercise</option>';
-  names.forEach(function (name) {
-    const sel = name === selectedName ? ' selected' : '';
-    html += '<option value="' + name + '"' + sel + '>' + name + '</option>';
-  });
-  return html;
-}
-
 function addRow(values) {
   values = values || {};
   const row = document.createElement('div');
@@ -65,7 +41,7 @@ function addRow(values) {
 
   const select = document.createElement('select');
   select.className = 'ex-name';
-  select.innerHTML = buildExerciseOptions(values.name);
+  select.innerHTML = buildExerciseOptions(exerciseNames, values.name);
 
   const sets = document.createElement('input');
   sets.type = 'number'; sets.min = '0'; sets.className = 'ex-sets';
@@ -148,29 +124,6 @@ function save() {
   });
 }
 
-function loadExerciseNames() {
-  return fetch(WGER_URL)
-    .then(function (res) {
-      if (!res.ok) throw new Error('wger request failed');
-      return res.json();
-    })
-    .then(function (data) {
-      const names = (data.results || [])
-        .filter(function (r) { return r.language === WGER_ENGLISH_ID; })
-        .map(function (r) { return (r.name || '').trim(); })
-        .filter(function (n) { return n.length > 0; });
-      const unique = Array.from(new Set(names)).sort();
-      if (unique.length) {
-        exerciseNames = unique;
-      } else {
-        showToast('Using built-in exercise list', 'info');
-      }
-    })
-    .catch(function () {
-      showToast('Exercise API unavailable, using built-in list', 'info');
-    });
-}
-
 function loadWorkoutForEdit() {
   return apiFetch('/workouts/' + workoutId).then(function (data) {
     const w = data.workout;
@@ -189,7 +142,8 @@ function init() {
   addBtn.addEventListener('click', function () { addRow(); });
   saveBtn.addEventListener('click', save);
 
-  loadExerciseNames().then(function () {
+  loadExerciseNames().then(function (names) {
+    exerciseNames = names;
     if (workoutId) {
       pageTitle.textContent = 'Edit Workout';
       loadWorkoutForEdit().catch(function (err) {
