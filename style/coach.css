@@ -27,7 +27,7 @@
 
 .data-row {
   background-color: var(--color-card-dark);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-lg);
   padding: var(--space-sm) var(--space-md);
   display: flex;
   align-items: center;
