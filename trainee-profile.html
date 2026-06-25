@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActiveCheck - Trainee Profile</title>
+  <link rel="icon" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/ui.css" />
+  <link rel="stylesheet" href="css/coach.css" />
+  <link rel="stylesheet" href="css/trainee-profile.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <header class="topbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="ActiveCheck" class="logo-img" />
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="user-greeting">
+        <span class="avatar" id="userInitial">?</span>
+        <span id="userGreeting">Hello</span>
+      </div>
+    </header>
+
+    <div class="app-body">
+
+      <nav class="sidebar" id="sidebar">
+        <a href="coach-dashboard.html">Dashboard</a>
+        <a href="coach-programs.html">Programs</a>
+        <a href="coach-trainees.html" class="active">Trainees</a>
+      </nav>
+
+      <main class="content">
+        <div class="panel-dark">
+          <h1 class="panel-title light">Trainee Profile</h1>
+
+          <div class="profile-header">
+            <span class="row-avatar" id="tpInitial">?</span>
+            <span class="row-name" id="tpName">Loading...</span>
+          </div>
+
+          <div class="tabs">
+            <button class="tab active" data-tab="workout">Workout</button>
+            <button class="tab" data-tab="metrics">Body Metrics</button>
+            <button class="tab" data-tab="programs">Programs</button>
+          </div>
+
+          <!-- Workout tab -->
+          <section class="tab-panel active" id="tab-workout">
+            <h2 class="section-subtitle">Workout History</h2>
+            <div class="tp-table-wrap">
+              <table class="tp-table">
+                <thead><tr><th>Date</th><th>Exercises</th><th class="ta-right">Action</th></tr></thead>
+                <tbody id="tpWorkoutBody"><tr><td colspan="3" class="state-msg">Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Body Metrics tab -->
+          <section class="tab-panel" id="tab-metrics">
+            <h2 class="section-subtitle">Profile Information</h2>
+            <div class="info-grid">
+              <span class="info-label">Full Name</span><span class="info-value" id="infoName">—</span>
+              <span class="info-label">Birth Year</span><span class="info-value" id="infoYear">—</span>
+              <span class="info-label">Height (cm)</span><span class="info-value" id="infoHeight">—</span>
+              <span class="info-label">Sex</span><span class="info-value" id="infoSex">—</span>
+            </div>
+            <h2 class="section-subtitle">Weight History</h2>
+            <div class="tp-table-wrap">
+              <table class="tp-table">
+                <thead><tr><th>Date</th><th>Weight</th></tr></thead>
+                <tbody id="tpWeightBody"><tr><td colspan="2" class="state-msg">No data.</td></tr></tbody>
+              </table>
+            </div>
+            <div class="tp-chart-wrap">
+              <canvas id="tpWeightChart"></canvas>
+              <p class="state-msg hidden" id="tpChartEmpty">No measurements yet.</p>
+            </div>
+          </section>
+
+          <!-- Programs tab -->
+          <section class="tab-panel" id="tab-programs">
+            <h2 class="section-subtitle">Programs</h2>
+            <div id="tpPrograms"><p class="state-msg">Loading...</p></div>
+            <div class="center-action">
+              <a class="btn btn-primary" id="createProgramBtn" href="#">Create Program</a>
+            </div>
+          </section>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/trainee-profile.js"></script>
+</body>
+</html>
