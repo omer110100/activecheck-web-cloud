@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ActiveCheck - Dashboard</title>
+  <link rel="icon" href="images/logo.png" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/app.css" />
   <link rel="stylesheet" href="css/dashboard.css" />
@@ -12,7 +13,6 @@
 
   <div class="app-shell">
 
-    <!-- Top bar -->
     <header class="topbar">
       <div class="logo">
         <img src="images/logo.png" alt="ActiveCheck" class="logo-img" />
@@ -23,49 +23,43 @@
       </button>
 
       <div class="user-greeting">
-        <span class="avatar">O</span>
-        Hello Omer !
+        <span class="avatar" id="userInitial">?</span>
+        <span id="userGreeting">Hello</span>
       </div>
     </header>
 
-    <!-- Body -->
     <div class="app-body">
 
-      <!-- Sidebar nav -->
       <nav class="sidebar" id="sidebar">
         <a href="dashboard.html" class="active">Dashboard</a>
-        <a href="#">Workouts</a>
-        <a href="#">Program</a>
-        <a href="#">Metrics</a>
-        <a href="#">Messages</a>
+        <a href="workouts.html">Workouts</a>
+        <a href="program.html">Program</a>
+        <a href="metrics.html">Metrics</a>
         <a href="coaches.html">Coaches</a>
       </nav>
 
-      <!-- Content -->
       <main class="content">
         <div class="panel dashboard-panel">
           <h1 class="panel-title light">Dashboard</h1>
 
-          <!-- stat cards -->
           <div class="stat-row">
             <div class="stat-card">
               <span class="stat-label">Last Workout</span>
-              <span class="stat-value">08-02-2026</span>
+              <span class="stat-value" id="lastWorkoutVal">...</span>
             </div>
             <div class="stat-card">
               <span class="stat-label">Current Weight</span>
-              <span class="stat-value">82 Kg</span>
+              <span class="stat-value" id="currentWeightVal">...</span>
             </div>
             <div class="stat-card">
               <span class="stat-label">Coach</span>
-              <span class="stat-value text-accent">Active</span>
+              <span class="stat-value" id="coachVal">...</span>
             </div>
           </div>
 
-          <!-- action buttons -->
           <div class="action-col">
-            <button class="btn btn-black action-btn">New Workout</button>
-            <button class="btn btn-dark action-btn">Workout History</button>
+            <a href="new-workout.html" class="btn btn-black action-btn">New Workout</a>
+            <a href="workout-history.html" class="btn btn-dark action-btn">Workout History</a>
           </div>
         </div>
       </main>
@@ -73,6 +67,9 @@
     </div>
   </div>
 
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>
