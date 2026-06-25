@@ -126,9 +126,15 @@
 .cancel-btn {
   background-color: #ffffff;
   color: var(--color-accent-dark);
+  font-size: 1.05rem;
+  padding: 12px 28px;
 }
 
-.save-btn { min-width: 160px; }
+.save-btn {
+  min-width: 160px;
+  font-size: 1.05rem;
+  padding: 12px 28px;
+}
 
 .form-status { min-height: 1.2rem; }
 
@@ -142,4 +148,10 @@
     border-radius: var(--radius-sm);
   }
   .exercise-row select { grid-column: 1 / -1; }
+
+  .form-actions { flex-direction: column; }
+  .form-actions .btn { width: 100%; }
+
+  .form-top { gap: var(--space-sm); }
+  .meta-row { gap: var(--space-md); }
 }

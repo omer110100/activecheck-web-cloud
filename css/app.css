@@ -175,6 +175,15 @@
   .topbar .user-greeting {
     font-size: 0.85rem;
   }
+  /* free up space on small screens: avatar + logout stay, greeting text hides */
+  #userGreeting {
+    display: none;
+  }
+  .logout-btn {
+    font-size: 0.72rem;
+    padding: 5px 10px;
+    margin-left: 4px;
+  }
   .panel {
     padding: var(--space-md);
   }
