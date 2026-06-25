@@ -5,7 +5,13 @@
    For production, change API_BASE to the Render URL.
    =========================================== */
 
-const API_BASE = 'http://localhost:8080/api';
+// Production API URL — replace REPLACE_WITH_RENDER_URL after deploying the server on Render.
+const PROD_API_BASE = 'https://REPLACE_WITH_RENDER_URL.onrender.com/api';
+
+// Use the local server during development, the Render server in production.
+const isLocalHost =
+  location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+const API_BASE = isLocalHost ? 'http://localhost:8080/api' : PROD_API_BASE;
 
 function getToken() {
   return localStorage.getItem('ac_token');

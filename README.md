@@ -1,78 +1,68 @@
-# ActiveCheck 🏋️
+# ActiveCheck — Client
 
-A fitness tracking web app frontend (final project – part A).
-Connects trainees and coaches: trainees can view their dashboard,
-browse and request coaches, and register/login.
+Frontend for **ActiveCheck**, a fitness app that connects trainees and coaches.
+Built with vanilla HTML, CSS and JavaScript (no framework). Talks to the
+ActiveCheck API over `fetch`.
 
-## Pages implemented
+## Features
 
-| Page | File | Type | Notes |
-|------|------|------|-------|
-| Login | `index.html` | Form | Email + password validation |
-| Registration | `register.html` | **Form page** | 4 fields + role dropdown, full validation |
-| Dashboard | `dashboard.html` | Main page | Stat cards + action buttons |
-| Find A Coach | `coaches.html` | Main page | **Dynamic content from JSON** + live search |
+**Trainee**
+- Register / login (role-based)
+- Dashboard with live stats
+- Workouts: full CRUD, exercise names from an external API (wger)
+- Body Metrics: profile + weight measurements with a Chart.js progress chart
+- Personal training program (create / edit)
+- Find a coach and request an assignment
 
-## Requirements covered
-
-- **HTML / CSS / JavaScript** – vanilla, no frameworks
-- **Design tokens** – all colors/fonts/spacing defined in `:root` (`css/style.css`)
-- **Responsive** – works from 320px mobile up to desktop; sidebar collapses
-  into a hamburger menu on screens ≤ 768px
-- **JSON dynamic content** – coaches are loaded from `data/coaches.json`
-  via `fetch()` and rendered with JavaScript (`js/coaches.js`),
-  not hard-coded in the HTML
-- **Meaningful interactions**
-  - Live search filtering of coaches (by name / city)
-  - "Request Assignment" button gives click feedback
-  - Mobile hamburger menu toggle
-  - Form validation
-- **Form validation** (`js/auth.js`) – no server connection:
-  - Required fields not empty
-  - Valid email format
-  - Password length ≥ 6 characters
-  - Password / confirm-password match (registration)
-  - Role selected from dropdown (registration)
-  - Error and success messages shown to the user
+**Coach**
+- Dashboard: approve / reject assignment requests, see active trainees
+- View a trainee's workouts, body metrics and programs
+- Create training programs for trainees
 
 ## Project structure
 
 ```
-activecheck/
-├── index.html          # Login
-├── register.html       # Registration (form page)
-├── dashboard.html      # Dashboard (main)
-├── coaches.html        # Find A Coach (main, JSON-driven)
-├── css/
-│   ├── style.css       # shared tokens + base styles
-│   ├── login.css       # auth pages (login + register)
-│   ├── app.css         # logged-in shell (sidebar + topbar)
-│   ├── dashboard.css
-│   └── coaches.css
+activecheck-web-cloud/
+├── index.html / register.html        # auth
+├── dashboard.html, workouts.html, ... # trainee pages
+├── coach-dashboard.html, ...          # coach pages
+├── css/                               # design tokens + per-page styles
 ├── js/
-│   ├── auth.js         # login + registration validation
-│   ├── app.js          # mobile menu toggle
-│   └── coaches.js      # load JSON + render + filter
-└── data/
-    └── coaches.json    # coach data
+│   ├── api.js        # API base URL + fetch wrapper + token
+│   ├── shell.js      # auth guard + top bar
+│   ├── ui.js         # modal + toast helpers
+│   ├── exercises.js  # wger external API
+│   └── ...           # per-page scripts
+└── images/
 ```
 
-## Running locally
+## External API & library
 
-The Coaches page uses `fetch()` to load JSON, so it must be served over HTTP
-(not opened with `file://`). From the project folder:
+- **External API:** [wger](https://wger.de/api/v2/) — exercise names for the workout/program forms.
+- **JavaScript library:** [Chart.js](https://www.chartjs.org/) — weight progress chart.
+
+## Run locally
+
+The pages use `fetch`, so serve over HTTP (not `file://`). With the server running
+on port 8080:
 
 ```bash
-python3 -m http.server 8000
+python -m http.server 5500
 ```
 
-Then open http://localhost:8000
+Then open `http://localhost:5500`.
+
+## Configuration
+
+`js/api.js` automatically uses `http://localhost:8080/api` during local development
+and the production API URL otherwise. Set `PROD_API_BASE` in `js/api.js` to your
+deployed server URL before publishing.
 
 ## Figma
 
-https://www.figma.com/design/QtqkU1OgHopKANnhnLUMPN/ActiveCheck?node-id=0-1&t=9wxWsWh23GBpX2LP-1
+https://www.figma.com/design/QtqkU1OgHopKANnhnLUMPN/ActiveCheck
 
 ## Group members
 
-- Omer Labinsky (עומר לבינסקי)
-- Alex Tkachenkov (אלכס טקצ'נקוב)
+- Omer Labinsky
+- Alex Tkachenkov
