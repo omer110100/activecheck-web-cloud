@@ -1,0 +1,36 @@
+/* ===========================================
+   Workouts hub page
+   =========================================== */
+
+.workouts-hub {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hub-actions {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.hub-btn {
+  font-size: 1.4rem;
+  padding: 28px 40px;
+  min-width: 260px;
+}
+
+@media (max-width: 600px) {
+  .hub-actions {
+    gap: var(--space-md);
+  }
+  .hub-btn {
+    width: 100%;
+    min-width: 0;
+    font-size: 1.1rem;
+    padding: 20px;
+  }
+}

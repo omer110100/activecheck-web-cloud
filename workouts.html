@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ActiveCheck - Workouts</title>
+  <link rel="icon" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/workouts.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <header class="topbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="ActiveCheck" class="logo-img" />
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="user-greeting">
+        <span class="avatar" id="userInitial">?</span>
+        <span id="userGreeting">Hello</span>
+      </div>
+    </header>
+
+    <div class="app-body">
+
+      <nav class="sidebar" id="sidebar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="workouts.html" class="active">Workouts</a>
+        <a href="program.html">Program</a>
+        <a href="metrics.html">Metrics</a>
+        <a href="coaches.html">Coaches</a>
+      </nav>
+
+      <main class="content">
+        <div class="panel workouts-hub">
+          <h1 class="panel-title light">Workouts</h1>
+
+          <div class="hub-actions">
+            <a href="new-workout.html" class="btn btn-primary hub-btn">Add Workout</a>
+            <a href="workout-history.html" class="btn btn-primary hub-btn">View Workout History</a>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
