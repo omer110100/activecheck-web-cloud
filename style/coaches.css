@@ -81,6 +81,22 @@
   opacity: 1;
 }
 
+/* "Your Coach" status badge (the trainee's assigned coach) */
+.coach-status-badge {
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.coach-status-badge.your-coach {
+  background-color: var(--color-accent);
+  color: var(--color-text-dark);
+}
+
 .loading-msg,
 .no-results {
   text-align: center;

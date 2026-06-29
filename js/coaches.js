@@ -9,6 +9,8 @@ const coachListEl = document.getElementById('coachList');
 const searchInput = document.getElementById('coachSearch');
 
 let allCoaches = [];
+let myCoachId = null;
+let myRequests = [];
 
 function makeAvatar(name) {
   const initials = name
@@ -32,6 +34,7 @@ function requestCoach(coachId, btn) {
   btn.disabled = true;
   apiFetch('/requests', { method: 'POST', body: JSON.stringify({ coachId: coachId }) })
     .then(function () {
+      myRequests.push({ coachId: coachId, status: 'pending' });
       markRequested(btn);
       showToast('Assignment requested', 'success');
     })
@@ -80,15 +83,38 @@ function createCoachCard(coach) {
   info.appendChild(metaEl);
   info.appendChild(bioEl);
 
+  card.appendChild(img);
+  card.appendChild(info);
+  card.appendChild(buildCoachAction(coach));
+  return card;
+}
+
+/* Decide what the trainee sees on each coach card:
+   "Your Coach" badge / "Assignment Requested" / "Request Assignment". */
+function buildCoachAction(coach) {
+  if (myCoachId && String(coach._id) === String(myCoachId)) {
+    const badge = document.createElement('span');
+    badge.className = 'coach-status-badge your-coach';
+    badge.textContent = 'Your Coach';
+    return badge;
+  }
+
+  const hasPending = myRequests.some(function (r) {
+    return String(r.coachId) === String(coach._id) && r.status === 'pending';
+  });
+
   const btn = document.createElement('button');
+  if (hasPending) {
+    btn.className = 'btn btn-requested';
+    btn.textContent = 'Assignment Requested';
+    btn.disabled = true;
+    return btn;
+  }
+
   btn.className = 'btn btn-primary';
   btn.textContent = 'Request Assignment';
   btn.addEventListener('click', function () { requestCoach(coach._id, btn); });
-
-  card.appendChild(img);
-  card.appendChild(info);
-  card.appendChild(btn);
-  return card;
+  return btn;
 }
 
 function renderCoaches(coaches) {
@@ -111,15 +137,19 @@ function getFilteredCoaches() {
 }
 
 function loadCoaches() {
-  apiFetch('/users/coaches')
-    .then(function (data) {
-      allCoaches = data.coaches;
-      renderCoaches(getFilteredCoaches());
-    })
-    .catch(function (err) {
-      coachListEl.innerHTML =
-        '<p class="no-results">Could not load coaches. ' + err.message + '</p>';
-    });
+  Promise.all([
+    apiFetch('/users/coaches'),
+    apiFetch('/users/me'),
+    apiFetch('/requests/mine')
+  ]).then(function (results) {
+    allCoaches = results[0].coaches;
+    myCoachId = results[1].user.coachId;
+    myRequests = results[2].requests || [];
+    renderCoaches(getFilteredCoaches());
+  }).catch(function (err) {
+    coachListEl.innerHTML =
+      '<p class="no-results">Could not load coaches. ' + err.message + '</p>';
+  });
 }
 
 if (searchInput) {

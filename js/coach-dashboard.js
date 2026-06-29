@@ -62,8 +62,10 @@ function renderTrainees(trainees) {
       '<span class="row-meta">Last: ' + shortDate(t.lastWorkout) + '</span>' +
       '<div class="row-actions">' +
       '  <a class="btn btn-view btn-sm" href="trainee-profile.html?id=' + t._id + '">View Profile</a>' +
+      '  <button class="btn btn-reject btn-sm remove-btn" type="button">Remove</button>' +
       '</div>';
     row.querySelector('.row-name').textContent = t.name;
+    row.querySelector('.remove-btn').addEventListener('click', function () { confirmRemove(t._id, t.name); });
     traineesList.appendChild(row);
   });
 }
@@ -75,6 +77,15 @@ function decide(id, status) {
       loadAll();
     })
     .catch(function (err) { showToast(err.message, 'error'); });
+}
+
+function confirmRemove(id, name) {
+  showConfirm('Remove ' + name + ' from your trainees?', { confirmText: 'Remove' }).then(function (ok) {
+    if (!ok) return;
+    apiFetch('/requests/trainee/' + id, { method: 'DELETE' })
+      .then(function () { showToast('Trainee removed', 'success'); loadAll(); })
+      .catch(function (err) { showToast(err.message, 'error'); });
+  });
 }
 
 function loadAll() {
